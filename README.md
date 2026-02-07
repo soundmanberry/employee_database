@@ -1,2 +1,2 @@
-# employee_database
-Linux employee database project
+# Employee Database Project
+A basic file-based database project for Linux.
