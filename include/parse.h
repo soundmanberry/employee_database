@@ -4,10 +4,10 @@
 #define HEADER_MAGIC 0x4c4c4144
 
 struct db_header_t {
-    unsigned int magic;
+    unsigned int   magic;
     unsigned short version;
     unsigned short count;
-    unsigned int filesize;
+    unsigned int   file_size;
 };
 
 struct employee_t {
