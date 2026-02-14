@@ -3,7 +3,7 @@
 
 #define HEADER_MAGIC 0x4c4c4144
 
-struct dbheader_t {
+struct db_header_t {
     unsigned int magic;
     unsigned short version;
     unsigned short count;
@@ -16,11 +16,11 @@ struct employee_t {
     unsigned int hours;
 };
 
-int create_db_header(int fd, struct dbheader_t **headerOut);
-int validate_db_header(int fd, struct dbheader_t **headerOut);
-int read_employees(int fd, struct dbheader_t *, struct employee_t **employeesOut);
-int output_file(int fd, struct dbheader_t *, struct employee_t *employees);
-void list_employees(struct dbheader_t *dbhdr, struct employee_t *employees);
-int add_employee(struct dbheader_t *dbhdr, struct employee_t *employees, char *addstring);
+int create_db_header(int fd, struct db_header_t **headerOut);
+int validate_db_header(int fd, struct db_header_t **headerOut);
+int read_employees(int fd, struct db_header_t *, struct employee_t **employeesOut);
+int output_file(int fd, struct db_header_t *, struct employee_t *employees);
+void list_employees(struct db_header_t *db_header, struct employee_t *employees);
+int add_employee(struct db_header_t *db_header, struct employee_t *employees, char *add_string);
 
 #endif
