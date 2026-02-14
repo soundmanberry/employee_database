@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
     char *file_path = NULL;
     bool new_file = false;
     int db_fd = -1;
+    struct db_header_t *header = NULL;
 
     int c;
 
@@ -50,6 +51,11 @@ int main(int argc, char *argv[]) {
 
         if (db_fd == STATUS_ERROR) {
             printf("Unable to create database file.\n");
+            return STATUS_ERROR;
+        }
+
+        if (create_db_header(db_fd, &header) == STATUS_ERROR) {
+            printf("Failed to create DB header.\n");
             return STATUS_ERROR;
         }
     }
