@@ -41,7 +41,7 @@ int validate_db_header(int fd, struct db_header_t **headerOut) {
         return STATUS_ERROR;
     }
 
-    if (read(fd, header, sizeof(struct db_header_t)) != sizeof(sizeof(struct db_header_t))) {
+    if (read(fd, header, sizeof(struct db_header_t)) != sizeof(struct db_header_t)) {
         perror("read");
         free(header);
         return STATUS_ERROR;
@@ -72,16 +72,32 @@ int validate_db_header(int fd, struct db_header_t **headerOut) {
         free(header);
         return STATUS_ERROR;
     }
+
+    *headerOut = header;
 }
 
-void list_employees(struct db_header_t *db_header, struct employee_t *employees) {
+int output_file(int fd, struct db_header_t *header/*, struct employee_t *employees*/) {
+    if (fd < 0) {
+        printf("Invalid file descriptor.\n");
+        return STATUS_ERROR;
+    }
+
+    header->magic     = htonl(header->magic);
+    header->version   = htons(header->version);
+    header->count     = htons(header->count);
+    header->file_size = htonl(header->file_size);
+
+    lseek(fd, 0, SEEK_SET);
+    write(fd, header, sizeof(struct db_header_t));
+
+    return STATUS_SUCCESS;
 }
 
-int add_employee(struct db_header_t *db_header, struct employee_t *employees, char *add_string) {
+void list_employees(struct db_header_t *header, struct employee_t *employees) {
 }
 
-int read_employees(int fd, struct db_header_t *db_header, struct employee_t **employeesOut) {
+int add_employee(struct db_header_t *header, struct employee_t *employees, char *add_string) {
 }
 
-int output_file(int fd, struct db_header_t *db_header, struct employee_t *employees) {
+int read_employees(int fd, struct db_header_t *header, struct employee_t **employeesOut) {
 }

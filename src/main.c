@@ -37,9 +37,6 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    printf("New file: %d\n", new_file);
-    printf("File path: %s\n", file_path);
-
     if (file_path == NULL) {
         printf("File path required.\n");
         print_usage(argv);
@@ -66,7 +63,17 @@ int main(int argc, char *argv[]) {
             printf("Unable to open database file.\n");
             return STATUS_ERROR;
         }
+
+        if (validate_db_header(db_fd, &header) == STATUS_ERROR) {
+            printf("Failed to validate DB header.\n");
+            return STATUS_ERROR;
+        }
     }
+
+    printf("New file: %d\n", new_file);
+    printf("File path: %s\n", file_path);
+
+    output_file(db_fd, header);
 
     return STATUS_SUCCESS;
 }
