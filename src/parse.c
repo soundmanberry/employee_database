@@ -10,7 +10,7 @@
 #include "common.h"
 #include "parse.h"
 
-int create_db_header(int fd, struct db_header_t **headerOut) {
+int create_db_header(struct db_header_t **headerOut) {
     struct db_header_t *header = calloc(1, sizeof(struct db_header_t));
 
     if (header == NULL) {
@@ -93,11 +93,11 @@ int output_file(int fd, struct db_header_t *header/*, struct employee_t *employe
     return STATUS_SUCCESS;
 }
 
-void list_employees(struct db_header_t *header, struct employee_t *employees) {
-}
+//void list_employees(struct db_header_t *header, struct employee_t *employees) {
+//}
 
-int add_employee(struct db_header_t *header, struct employee_t *employees, char *add_string) {
-}
+//int add_employee(struct db_header_t *header, struct employee_t *employees, char *add_string) {
+//}
 
-int read_employees(int fd, struct db_header_t *header, struct employee_t **employeesOut) {
-}
+//int read_employees(int fd, struct db_header_t *header, struct employee_t **employeesOut) {
+//}
