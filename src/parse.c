@@ -74,6 +74,8 @@ int validate_db_header(int fd, struct db_header_t **headerOut) {
     }
 
     *headerOut = header;
+
+    return STATUS_SUCCESS;
 }
 
 int output_file(int fd, struct db_header_t *header/*, struct employee_t *employees*/) {
