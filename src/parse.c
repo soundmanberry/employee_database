@@ -95,11 +95,11 @@ int output_file(int fd, struct db_header_t *header/*, struct employee_t *employe
     return STATUS_SUCCESS;
 }
 
-//void list_employees(struct db_header_t *header, struct employee_t *employees) {
+//int read_employees(int fd, struct db_header_t *header, struct employee_t **employeesOut) {
 //}
 
 //int add_employee(struct db_header_t *header, struct employee_t *employees, char *add_string) {
 //}
 
-//int read_employees(int fd, struct db_header_t *header, struct employee_t **employeesOut) {
+//void list_employees(struct db_header_t *header, struct employee_t *employees) {
 //}
